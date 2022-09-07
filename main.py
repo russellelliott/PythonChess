@@ -24,6 +24,8 @@ def home():
     #https://stackoverflow.com/questions/50851054/how-can-i-load-svg-file-into-my-python-flask-page
     return render_template('index.html', svg=Markup(svg))
 
+#run python script with button onclick
+#https://github.com/hackanons/button-python-click/tree/master/Run%20Python%20Script%20Html%20Flask/Html%20Button%20to%20Python%20Script
 @app.route('/result',methods=['POST', 'GET'])
 def result():
     output = request.form.to_dict()
