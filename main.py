@@ -5,9 +5,22 @@ app = Flask(  # Create a flask app
 	static_folder='static'  # Name of directory for static files
 )
 
+import chess
+import chess.svg
+
+from flask import Markup
+
+
+
+#display homepage
 @app.route('/')
 def home():
-    return render_template('index.html')
+    board = chess.Board()
+    svg = chess.svg.board(board, size=350) #make the svg
+    
+    #display svg
+    #https://stackoverflow.com/questions/50851054/how-can-i-load-svg-file-into-my-python-flask-page
+    return render_template('index.html', svg=Markup(svg))
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=8080) # This line is required to run Flask on repl.it
