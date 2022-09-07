@@ -1,3 +1,19 @@
 <h1>Python Chess</h1>
 <p>Text go here.</p>
 {{svg}}
+
+<form class="grid" action="/result" method="POST">
+
+    {% if name %}
+      <center>
+        <h3 style="color: blue;" class="let_space">Hello {{name}}, How was your day!!</h3>
+      </center> 
+
+    {% endif %}
+     
+    <label for="name">Enter you name:</label>
+    <input type="text" id="name" name="name">
+
+    <center><input class="file_submit" type="Submit"></center>
+
+  </form>
