@@ -11,7 +11,7 @@ import chess.svg
 from flask import Markup
 
 starter = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1' #change this whenever you want the board to change
-
+board = chess.Board(starter)
 #function to make the board
 def makeBoard(FEN = starter):
     board = chess.Board(FEN)
@@ -20,8 +20,9 @@ def makeBoard(FEN = starter):
 
 #display homepage
 @app.route('/')
-def home(FEN = starter):
-    svg = makeBoard(FEN)
+def home(board = chess.Board(starter)):
+    #svg = makeBoard(FEN)
+    svg = chess.svg.board(board, size=350) #make the svg
     #display svg
     #https://stackoverflow.com/questions/50851054/how-can-i-load-svg-file-into-my-python-flask-page
     return render_template('index.html', svg=Markup(svg))
@@ -32,7 +33,8 @@ def home(FEN = starter):
 def result():
     output = request.form.to_dict()
     print(output)
-    name = output["name"]
+    name = output["name"] #move the user inputted
+    
 
 
     return render_template('index.html', name = name)
