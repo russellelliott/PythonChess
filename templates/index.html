@@ -1,10 +1,34 @@
 <h1>Python Chess</h1>
-{%if turn=="white"%}
-    <div><h1>White's Move</h1></div>
-{%elif turn=="black"%}
-    <div><h1>Black's Move</h1></div>
-{% endif %}
-{{svg}}
+
+<style>
+    /*https://www.w3schools.com/cssref/pr_background-color.asp*/
+    /*https://www.w3schools.com/css/css_text.asp*/
+    .white{
+        background-color:white;
+        color:black;
+        height:100%;
+
+    }
+
+    .black{
+        background-color:black;
+        color:white;
+        height:100%;
+    }
+</style>
+
+<table style = "width:100%">
+    <tr>
+        <td>{{svg}}</td>
+        <td>
+            {%if turn=="white"%}
+                <div class = "white"><h1>White's Move</h1></div>
+            {%elif turn=="black"%}
+                <div class = "black"><h1>Black's Move</h1></div>
+            {% endif %}
+        </td>
+    </tr>
+  </table>
 
 <form class="grid" action="/result" method="POST">
 
