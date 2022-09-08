@@ -15,6 +15,11 @@
         color:white;
         height:100%;
     }
+
+    .check{
+        background-color:tomato;
+        width:100%;
+    }
 </style>
 
 <table style = "width:100%">
@@ -30,6 +35,11 @@
     </tr>
   </table>
 
+  {% if status == "check" %}
+  <div class = "check"><center><h1>check</h1></center></div>
+  {% else %}
+  <div><center><h1>&nbsp;</h1></center></div>
+  {% endif %}
 <form class="grid" action="/result" method="POST">
 
     {% if name %}
@@ -45,6 +55,6 @@
 
     <center><input class="file_submit" type="Submit"></center>
     {%elif status in ['checkmate', 'stalemate']%}
-      {{status}}
+      <center><h1>{{status}}</h1></center>
     {% endif %}
   </form>
