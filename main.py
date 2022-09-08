@@ -31,6 +31,9 @@ def home(board = chess.Board(starter)):
 def human(board, moveInput):
     #displayBoard(board) #display the board after every turn
     #moveInput = input("make a legal move: ")
+    if moveInput=="":
+        print("need to input valid move")
+        return board
     move = chess.Move.from_uci(moveInput) #make the move
     if move in board.legal_moves: #if the move is legal
         board.push(move) #push the move
