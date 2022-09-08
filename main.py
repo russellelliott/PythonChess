@@ -25,7 +25,7 @@ def home(board = chess.Board(starter)):
     svg = chess.svg.board(board, size=350) #make the svg
     #display svg
     #https://stackoverflow.com/questions/50851054/how-can-i-load-svg-file-into-my-python-flask-page
-    return render_template('index.html', svg=Markup(svg), turn="white")
+    return render_template('index.html', svg=Markup(svg), turn="white", status="")
 
 #function that allows a human player to make a move
 def human(board, moveInput):
@@ -50,6 +50,22 @@ def getTurn(board):
         return("white")
     return("black")
 
+#function to check the status of the game
+def getStatus(board):
+    status = "" #default status
+    #Verifying check
+    if(board.is_check()):
+        status = "check"
+    #Verifying checkmate
+    if(board.is_checkmate()):
+        status = "checkmate"
+
+    #Verifying stalemate
+    if(board.is_stalemate()):
+        status = "stalemate"
+    
+    return status
+
 #run python script with button onclick
 #https://github.com/hackanons/button-python-click/tree/master/Run%20Python%20Script%20Html%20Flask/Html%20Button%20to%20Python%20Script
 @app.route('/result',methods=['POST', 'GET'])
@@ -62,7 +78,8 @@ def result():
     #home(board)
     svg = chess.svg.board(board, size=350) #make the svg
     turn = getTurn(board)
-    return render_template('index.html', svg=Markup(svg), turn=turn)
+    status = getStatus(board)
+    return render_template('index.html', svg=Markup(svg), turn=turn, status=status)
 
 
     #return render_template('index.html', name = name)

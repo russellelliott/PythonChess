@@ -38,10 +38,13 @@
       </center> 
 
     {% endif %}
-     
+    
+    {%if status not in ['checkmate', 'stalemate']%}
     <label for="name">Enter you name:</label>
     <input type="text" id="name" name="name">
 
     <center><input class="file_submit" type="Submit"></center>
-
+    {%elif status in ['checkmate', 'stalemate']%}
+      {{status}}
+    {% endif %}
   </form>
