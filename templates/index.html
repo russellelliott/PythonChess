@@ -1,7 +1,11 @@
 <h1>Python Chess</h1>
-<p>Text go here.</p>
+{%if turn=="white"%}
+    <div><h1>White's Move</h1></div>
+{%elif turn=="black"%}
+    <div><h1>Black's Move</h1></div>
+{% endif %}
 {{svg}}
-{{turn}}
+
 <form class="grid" action="/result" method="POST">
 
     {% if name %}
