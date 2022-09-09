@@ -27,8 +27,8 @@
     }
 
     .black{
-        background-color:crimson;
-        border: 3px solid darkred;
+        background-color:darkorchid;
+        border: 3px solid darkmagenta;
         color:white;
     }
 
@@ -37,24 +37,27 @@
     */
     .check{
         background-color:orange;
-        width:100%;
+        border: 3px solid orangered;
+        color:black;
     }
 
     .checkmate{
-        background-color:tomato;
-        width:100%;
+        background-color:crimson;
+        border: 3px solid darkred;
+        color:white;
     }
 
     .safe{
         background-color:mediumseagreen;
-        width:100%;
+        border: 3px solid green;
+        color:black;
     }
 </style>
 
 <table style = "width:100%">
     <tr>
         <td>{{svg}}</td>
-        <td style = "height: inherit;">
+        <td>
             {%if turn=="white"%}
                 <div class = "center white"><h1>White's Move</h1></div>
             {%elif turn=="black"%}
