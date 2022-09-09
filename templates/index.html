@@ -16,8 +16,21 @@
         height:100%;
     }
 
+    /*HTML colors
+    https://www.w3schools.com/html/html_colors.asp
+    */
     .check{
+        background-color:orange;
+        width:100%;
+    }
+
+    .checkmate{
         background-color:tomato;
+        width:100%;
+    }
+
+    .safe{
+        background-color:mediumseagreen;
         width:100%;
     }
 </style>
@@ -37,8 +50,11 @@
 
   {% if status == "check" %}
   <div class = "check"><center><h1>check</h1></center></div>
+  {%elif status in ['checkmate', 'stalemate']%}
+  <div class = "checkmate"><center><h1>{{status}}</h1></center></div>
   {% else %}
-  <div><center><h1>&nbsp;</h1></center></div>
+  <div class = "safe"><center><h1>ongoing game</h1></center></div>
+
   {% endif %}
 <form class="grid" action="/result" method="POST">
 
@@ -54,7 +70,5 @@
     <input type="text" id="name" name="name">
 
     <center><input class="file_submit" type="Submit"></center>
-    {%elif status in ['checkmate', 'stalemate']%}
-      <center><h1>{{status}}</h1></center>
     {% endif %}
   </form>
