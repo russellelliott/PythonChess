@@ -3,17 +3,33 @@
 <style>
     /*https://www.w3schools.com/cssref/pr_background-color.asp*/
     /*https://www.w3schools.com/css/css_text.asp*/
-    .white{
-        background-color:white;
-        color:black;
+
+    .center {
+        /*Full height div: https://stackoverflow.com/questions/3215553/make-a-div-fill-an-entire-table-cell
+        */
         height:100%;
+    /*center text in div:*/
+    /*https://www.w3schools.com/css/css_align.asp
+    */
+        margin: auto;
+        border-radius:40px;
+        /*https://stackoverflow.com/questions/5703552/how-can-i-center-text-horizontally-and-vertically-inside-a-div-block
+    */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .white{
+        background-color:aqua;
+        border: 3px solid dodgerblue;
+        color:black;
 
     }
 
     .black{
-        background-color:black;
+        background-color:crimson;
+        border: 3px solid darkred;
         color:white;
-        height:100%;
     }
 
     /*HTML colors
@@ -38,11 +54,11 @@
 <table style = "width:100%">
     <tr>
         <td>{{svg}}</td>
-        <td>
+        <td style = "height: inherit;">
             {%if turn=="white"%}
-                <div class = "white"><h1>White's Move</h1></div>
+                <div class = "center white"><h1>White's Move</h1></div>
             {%elif turn=="black"%}
-                <div class = "black"><h1>Black's Move</h1></div>
+                <div class = "center black"><h1>Black's Move</h1></div>
             {% endif %}
         </td>
     </tr>
