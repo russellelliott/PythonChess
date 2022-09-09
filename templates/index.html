@@ -7,7 +7,6 @@
     .center {
         /*Full height div: https://stackoverflow.com/questions/3215553/make-a-div-fill-an-entire-table-cell
         */
-        height:100%;
     /*center text in div:*/
     /*https://www.w3schools.com/css/css_align.asp
     */
@@ -52,11 +51,42 @@
         border: 3px solid green;
         color:black;
     }
+
+    .move{
+        padding:30px;
+        background-color:lightgrey;
+        border: 3px solid grey;
+        color:black;
+    }
+
+    /*
+    input filed css
+    https://www.w3schools.com/css/css_form.asp
+    */
+    input{
+        font-size:50px;
+        width:100%;
+        border-radius:20px;
+        border: 3px solid black;
+        text-align: center;
+    }
+    /*input field palceholder css
+    https://stackoverflow.com/questions/7381446/center-html-input-text-field-placeholder
+    */
+    ::placeholder {
+        text-align: center; 
+     }
+
+     form {
+        display: block;
+        margin-top: 0em;
+        margin-block-end: 0em !important;
+    }
 </style>
 
+<center>{{svg}}</center>
 <table style = "width:100%">
     <tr>
-        <td>{{svg}}</td>
         <td>
             {%if turn=="white"%}
                 <div class = "center white"><h1>White's Move</h1></div>
@@ -64,30 +94,25 @@
                 <div class = "center black"><h1>Black's Move</h1></div>
             {% endif %}
         </td>
+        <td>
+            {% if status == "check" %}
+            <div class = "center check"><center><h1>check</h1></center></div>
+            {%elif status in ['checkmate', 'stalemate']%}
+            <div class = "center checkmate"><center><h1>{{status}}</h1></center></div>
+            {% else %}
+            <div class = "center safe"><center><h1>ongoing game</h1></center></div>
+            {% endif %}
+        </td>
     </tr>
   </table>
 
-  {% if status == "check" %}
-  <div class = "check"><center><h1>check</h1></center></div>
-  {%elif status in ['checkmate', 'stalemate']%}
-  <div class = "checkmate"><center><h1>{{status}}</h1></center></div>
-  {% else %}
-  <div class = "safe"><center><h1>ongoing game</h1></center></div>
-
-  {% endif %}
+  <div class = "center move">
 <form class="grid" action="/result" method="POST">
-
-    {% if name %}
-      <center>
-        <h3 style="color: blue;" class="let_space">Hello {{name}}, How was your day!!</h3>
-      </center> 
-
-    {% endif %}
     
     {%if status not in ['checkmate', 'stalemate']%}
-    <label for="name">Enter you name:</label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" placeholder = "Enter Your Move">
 
-    <center><input class="file_submit" type="Submit"></center>
+    <input class="file_submit" type="Submit">
     {% endif %}
   </form>
+</div>
