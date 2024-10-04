@@ -10,7 +10,7 @@ import chess.svg
 
 from flask import Markup
 
-starter = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1' #change this whenever you want the board to change
+starter = 'rnbqkbnr/8/8/PPPPPPPP/PPPPPPPP/8/8/3qk3 w KQkq - 0 1' #change this whenever you want the board to change
 board = chess.Board(starter)
 #function to make the board
 def makeBoard(FEN = starter):
@@ -71,7 +71,7 @@ def getStatus(board):
 
 #run python script with button onclick
 #https://github.com/hackanons/button-python-click/tree/master/Run%20Python%20Script%20Html%20Flask/Html%20Button%20to%20Python%20Script
-@app.route('/result',methods=['POST', 'GET'])
+@app.route('/',methods=['POST', 'GET'])
 def result():
     output = request.form.to_dict()
     print(output)
